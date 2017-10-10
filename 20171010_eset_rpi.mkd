@@ -1,0 +1,46 @@
+*** Bouton reset raspberry***
+
+Quelques lignes pour pour montrer comment solutionner le problème de reset du Rpi afin d'éviter le «vieux unplug à chaud et bien dégueulasse» qu'on est tenter de faire si on conserve la configuration du raspberry.
+
+En effet, débrancher et rebrancher votre raspberry pi à chaud risque d'endommager de façon définitive le système d'expension. 
+De plus d'un point électriques, vous mettez à mal l'intégrité de votre nano-ordinatteur.
+
+Mais, il existe des solution. Voyons en délais.
+
+# Cas du raspberry Zero 1.3 et Zero W
+
+Le raspberry Zéro (1.2, 1.3 et w) possède juste coté du port GPIO, 2 broches intitulés «run». 
+En fermant le circuit au niveau de ces broches, vous faites un reset de votre Rpi.
+Pour réaliser cette fermeture de circuit, c'est très simple : il suffit d'ajouer un bouton poussoir qui est à l'état ouvert par défaut [^1].
+
+Attention cepenant, un reset de type hard n'est pas vraiment meilleur. Je vous conseille donc de réaliser :
+```
+sudo reboot
+```
+
+autant que faire se peut avant d'employer l'arme nucléaire!
+
+De la même façon, ce bouton permet de démarrer le Rpi après l'avoir éteint à l'aide de la commande système :
+
+```
+sudo halt
+```
+
+# Cas du raspberry pi 3
+
+Pour le raspberry Pi 3 (et pour le 2 également), vous pouvez réaliser cette manip/modification en connectant le bouton poussoir sur le RPi a l'aide des broches nommées P16 que vous pouvez trouver au dos de la carte de votre mini-ordinateur.
+
+Vous trouverez [ICI](http://www.framboise314.fr/ma-framboise314-fait-risette-ajouter-un-bouton-de-reset-au-rasperry-pi-version-b/) un article détaillé et publié sur le site framboise314.fr
+
+# Et si on le commandait électronique ce bouton?
+
+Il faudra être patient c'est dans les tirroirs car je dois solutionner ce problème pour redémarrer de façon périodique mon RPi qui est en charge des acquisitons de données météo de la maison!
+
+Patience ça viendra dans quelques semaines.
+
+
+Bon alors prêt à ajouter ce bouton sur votre raspberry?
+
+
+[^1] Ce serait bête de devois maintenir le bouton enfoncer pour que votre Rpi Tourne…
+
